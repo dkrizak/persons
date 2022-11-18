@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Employees</title>
+</head>
+<body>
+  <h1>Employees</h1>
+  <p th:unless="${employees.size() > 0}">There are no employees in the list.</p>
+
+  <table th:if="${employees.size() > 0}">
+    <thead>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Country</th>
+    <th>Employee number</th>
+    <th>Date of Hiring</th>
+    <th>Is Active</th>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+      <td th:text="${employee.person.firstName}"></td>
+      <td th:text="${employee.person.lastName}"></td>
+      <td th:text="${employee.person.age}"></td>
+      <td th:text="${employee.person.country}"></td>
+      <td th:text="${employee.employeeNumber}"></td>
+      <td th:text="${employee.hireDate}"></td>
+      <td th:text="${employee.active}"></td>
+      <td>
+        <a th:href="@{/employees/updateEmployee/{id}(id=${employee.id})}">Update</a>
+        <form style="display: inline" action="#" th:action="@{/employees/deleteEmployee}" method="post">
+          <input name="id" type="hidden" th:value="${employee.id}">
+          <input type="submit" value="Delete">
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <a th:href="@{/persons}">Show Persons</a>
+
+</body>
+</html>

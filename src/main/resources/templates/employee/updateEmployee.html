@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+  <title>Employees</title>
+</head>
+<body>
+  <h1>Update Employee</h1>
+
+  <form action="#" th:action="@{/employees/saveEmployee}" th:object="${employee}" method="post">
+    <table>
+      <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Country</th>
+      <th>Employee number</th>
+      <th>Date of Hiring</th>
+      <th>Is Active</th>
+      </thead>
+      <tbody>
+      <td><input disabled type="text" th:field="*{person.firstName}"></td>
+      <td><input disabled type="text" th:field="*{person.lastName}"></td>
+      <td><input disabled type="number" th:field="*{person.age}"></td>
+      <td><input disabled type="text" th:field="*{person.country}"></td>
+      <td><input type="number" th:field="*{employeeNumber}"></td>
+      <td><input type="date" th:field="*{hireDate}"></td>
+      <td>
+        <label>Is an active employee?</label>
+        <input type="checkbox" name="activeEmpChk" th:checked="*{active}">
+      </td>
+
+      <td><button type="submit">Update Employee</button></td>
+      </tbody>
+    </table>
+
+    <input name="personId" type="hidden" th:value="${employee.id}">
+    <input type="hidden" th:value="*{id}">
+
+  </form>
+  <hr>
+  <a th:href="@{/employees}">Back to Employee List</a>
+
+</body>
+</html>

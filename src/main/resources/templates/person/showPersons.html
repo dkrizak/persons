@@ -27,6 +27,10 @@
                     <input name="id" type="hidden" th:value="${person.id}">
                     <input type="submit" value="Delete">
                 </form>
+                <form th:unless="${employeeIdList.contains(person.id)}" style="display: inline" action="#" th:action="@{/employees/addEmployee}" method="get">
+                    <input name="id" type="hidden" th:value="${person.id}">
+                    <input type="submit" value="Employ">
+                </form>
             </td>
         </tr>
         </tbody>
@@ -40,5 +44,7 @@
 
         <button type="submit">Add Person</button>
     </form>
+    <hr>
+    <a th:href="@{/employees}">Show Employees</a>
   </body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Employees</title>
+</head>
+<body>
+  <h1>Add Employee</h1>
+  <form action="#" th:action="@{/employees/saveEmployee}" th:object="${employee}" method="post">
+    <input type="number" th:field="*{employeeNumber}" placeholder="Insert Employee Number">
+    <input type="date" th:field="*{hireDate}" placeholder="Insert date of Hiring">
+    <label>Is an active employee?</label>
+    <input type="checkbox" name="activeEmpChk" th:checked="*{active}">
+
+    <input name="personId" type="hidden" th:value="${personId}">
+
+    <button type="submit">Add Employee</button>
+  </form>
+
+</body>
+</html>
