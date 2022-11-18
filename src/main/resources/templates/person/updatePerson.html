@@ -7,13 +7,24 @@
 <body>
 <h1>Update Person</h1>
 <form action="#" th:action="@{/persons/savePerson}" th:object="${person}" method="post">
-    <input type="text" th:field="*{firstName}">
-    <input type="text" th:field="*{lastName}">
-    <input type="number" th:field="*{age}">
-    <input type="text" th:field="*{country}">
+    <table>
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Country</th>
+        </thead>
+        <tbody>
+            <td><input type="text" th:field="*{firstName}"></td>
+            <td><input type="text" th:field="*{lastName}"></td>
+            <td><input type="number" th:field="*{age}"></td>
+            <td><input type="text" th:field="*{country}"></td>
+            <td><button type="submit">Update Person</button></td>
+        </tbody>
+    </table>
+
     <input type="hidden" th:field="*{id}">
 
-    <button type="submit">Update Person</button>
 </form>
 <hr>
 <a th:href="@{/persons}">Back to Person List</a>
