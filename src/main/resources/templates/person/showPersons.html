@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+      <title>Persons</title>
+  </head>
+  <body>
+    <h1>Persons</h1>
+    <p th:unless="${persons.size() > 0}">There are no persons in the list.</p>
+
+    <table th:if="${persons.size() > 0}">
+        <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Country</th>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.country}"></td>
+            <td>
+                <a th:href="@{/persons/updatePerson/{id}(id=${person.id})}">Update</a>
+                <form style="display: inline" action="#" th:action="@{/persons/deletePerson}" method="post">
+                    <input name="id" type="hidden" th:value="${person.id}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <form action="#" th:action="@{/persons/savePerson}" th:object="${newPerson}" method="post">
+        <input type="text" th:field="*{firstName}" placeholder="Insert First Name">
+        <input type="text" th:field="*{lastName}" placeholder="Insert Last Name">
+        <input type="number" th:field="*{age}" placeholder="Insert Age">
+        <input type="text" th:field="*{country}" placeholder="Insert Country">
+
+        <button type="submit">Add Person</button>
+    </form>
+  </body>
+</html>

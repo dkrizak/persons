@@ -18,6 +18,7 @@ public class RestPersonController {
 
     @PostMapping("/persons")
     public ResponseEntity<Person> createPerson(@RequestBody Person person){
+
         try{
             //service method, return
             Person _person = personService.savePerson(person);
