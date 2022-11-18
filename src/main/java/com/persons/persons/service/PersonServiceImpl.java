@@ -61,4 +61,9 @@ public class PersonServiceImpl implements PersonService{
     public void deletePersonById(long id) {
         personRepository.deleteById(id);
     }
+
+    @Override
+    public boolean existsPeronById(long id) {
+        return personRepository.existsById(id);
+    }
 }
